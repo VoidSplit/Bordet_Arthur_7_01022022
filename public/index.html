@@ -9,11 +9,11 @@
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <title>Les petits plats</title>
     <script src="../data/recipes.js" defer></script>
-    <script src="js/algorithm/firstSearch.js" defer></script>
+    <!--<script src="js/algorithm/firstSearch.js" defer></script>-->
+    <script src="js/algorithm/secondSearch.js" defer></script>
     <script src="js/generation/dom.js" defer></script>
     <script src="js/generation/url.js" defer></script>
     <script src="js/listeners/input.js" defer></script>
-    <script src="js/listeners/click.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 
@@ -38,10 +38,6 @@
                         fill="black" />
                 </svg>
             </div>
-            <!--
-            <div class="stats">
-                <div id="execution-main" class="main stats-inner">0ms</div>
-            </div>-->
         </div>
         <div id="tags-wrapper" class="filters-tag-list dfr"> </div>
         <div class="filters-tag-dropdown-list dfr">
@@ -108,10 +104,9 @@
                     </div>
                     <div id="ustenciles-tag-list" class="tag-list"> </div>
                 </div>
-                <!--<div id="stats-button" class=" stats-button">Changer d'algorithme</div>-->
                 <div class="stats-wrapper">
                     <label class="switch">
-                      <input type="checkbox" name="checkbox" aria-label="change Algorithm">
+                      <input id="stats-button" type="checkbox" name="checkbox" aria-label="change Algorithm">
                       <span class="slider round"></span>
                     </label>
                     <div id="execution-main" class="stats">0ms</div>

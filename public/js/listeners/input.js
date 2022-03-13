@@ -9,7 +9,7 @@ ingredientInput.addEventListener("input", (e) => {
   let ustensilsList = undefined;
   ingredientList = search(
     e.target.value.toLowerCase(),
-    getTagList(recipeList).ingredientList
+    console.log(getTagList(recipeList).ingredientList)
   );
   getTime(e.target.value.toLowerCase(), "ingredients")
 

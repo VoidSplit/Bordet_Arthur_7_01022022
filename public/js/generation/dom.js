@@ -48,7 +48,6 @@ function generateDropdownList(list) {
 }
 function displayRecipes(list) {
   // console.info('displayRecipes')
-
   let wrapper = document.getElementById("recipes-wrapper");
   wrapper.innerHTML = ``;
   function getIngredients(recipe) {

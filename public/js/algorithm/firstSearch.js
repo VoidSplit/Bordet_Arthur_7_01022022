@@ -1,5 +1,4 @@
 function search(input, list,wantTimer) {
-  //console.info('search')
   let timerStart = new Date();
 
   const filteredList = list.filter((el) => el.toLowerCase().includes(input));
@@ -12,9 +11,7 @@ function search(input, list,wantTimer) {
   }
 }
 function searchRecipe(a, b, c) {
-  // console.info('searchRecipe')
   function getListInfos(list) {
-    // console.info('getListInfos')
     let result = [];
     list.forEach((item) => {
       let searchTable = [];
@@ -41,7 +38,6 @@ function searchRecipe(a, b, c) {
 
   function filterTable(input, listToFilter, wantTimer) {
     let timerStart = new Date();
-    // console.warn('filterTable')
 
     const filtered = [];
     const table = [];
@@ -59,8 +55,6 @@ function searchRecipe(a, b, c) {
           table.push(a);
         });
     });
-    //console.log(filtered)
-    //console.log(table)
     timerEnd = new Date();
     let timer = timerEnd - timerStart;
     if (wantTimer === true) {
@@ -74,8 +68,6 @@ function searchRecipe(a, b, c) {
 }
 
 function getTagList(list) {
-  //console.info('getTagList')
-
   let ingredientList = [];
   let applianceList = [];
   let ustensilsList = [];
@@ -112,45 +104,4 @@ function getTagList(list) {
 
   
   return { ingredientList, applianceList, ustensilsList };
-}
-function getTagColor(list, tag) {
-  //console.info('getTagColor')
-
-  if (list.ingredientList.map((e) => e.toLowerCase()).includes(tag)) {
-    let color = "#3282F7";
-    return color;
-  } else if (list.applianceList.map((e) => e.toLowerCase()).includes(tag)) {
-    let color = "#68D9A4";
-    return color;
-  } else if (list.ustensilsList.map((e) => e.toLowerCase()).includes(tag)) {
-    let color = "#ED6454";
-    return color;
-  }
-}
-function addTag(tag, color) {
-  //console.info('addTag')
-
-  let wrapper = document.getElementById("tags-wrapper");
-  let tagDOM = document.createElement("div");
-
-  tagDOM.setAttribute("class", "tag dfr");
-  tagDOM.innerHTML = `<p>${tag}</p>`;
-  tagDOM.style.background = color;
-
-  let close = document.createElement("div");
-
-  close.setAttribute("class", "close dfr centered");
-  close.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="white"></path>
-        </svg>
-    `;
-  close.addEventListener("click", () => {
-    wrapper.removeChild(tagDOM);
-    removeParam(tag);
-  });
-
-  tagDOM.appendChild(close);
-  wrapper.appendChild(tagDOM);
-  addParam(tag);
 }

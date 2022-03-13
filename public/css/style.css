@@ -348,7 +348,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 .stats-wrapper .stats {
   top: 0;
@@ -357,4 +357,30 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  main {
+    padding: 0 15px;
+  }
+  .inner-content {
+    flex-direction: column;
+  }
+  .stats-wrapper {
+    position: relative;
+    
+    justify-content: flex-start;
+  }
+  .dropdown-box {
+    width: 100%;
+  }
+  .dropdown-box:hover {
+    width: 100%;
+  }
+  .filters-tag-dropdown-list {
+    height: auto;
+  }
+  .filters-tag-dropdown-list > .inner-content {
+    position: relative;
+    width: 100%;
+  }
 }
