@@ -7,8 +7,10 @@ function getStatut() {
   let params = new URL(document.location.href).searchParams;
   let filter = params.get("filter");
 
-  let filterList = filter.split(",");
-  return filterList;
+  if(filter) {
+    let filterList = filter.split(",");
+    return filterList;
+  }
 }
 
 async function loadFilters(filters) {
@@ -114,19 +116,22 @@ function normalizeStr(stringToReplace) {
 }
 function getTagColor(list, tag) {
 
-    if (list.ingredientList.map((e) => e.toLowerCase()).includes(tag)) {
+    if (list.ingredientList.map((e) => e.toLowerCase()).includes(normalizeStr(tag))) {
       let color = "#3282F7";
       return color;
-    } else if (list.applianceList.map((e) => e.toLowerCase()).includes(tag)) {
+    } else if (list.applianceList.map((e) => e.toLowerCase()).includes(normalizeStr(tag))) {
       let color = "#68D9A4";
       return color;
-    } else if (list.ustensilsList.map((e) => e.toLowerCase()).includes(tag)) {
+    } else if (list.ustensilsList.map((e) => e.toLowerCase()).includes(normalizeStr(tag))) {
       let color = "#ED6454";
       return color;
     }
 }
 function addTag(tag, color) {
   
+  /*if(getStatut().filter(el => el == tag)) {
+    console.log(`tag ${tag} already exist`)
+  }*/
     let wrapper = document.getElementById("tags-wrapper");
     let tagDOM = document.createElement("div");
   

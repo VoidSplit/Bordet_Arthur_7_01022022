@@ -8,10 +8,10 @@ ingredientInput.addEventListener("input", (e) => {
   let applianceList = undefined;
   let ustensilsList = undefined;
   ingredientList = search(
-    e.target.value.toLowerCase(),
-    console.log(getTagList(recipeList).ingredientList)
+    normalizeStr(e.target.value.toLowerCase()),
+    getTagList(recipeList).ingredientList
   );
-  getTime(e.target.value.toLowerCase(), "ingredients")
+  getTime(normalizeStr(e.target.value.toLowerCase()), "ingredients")
 
   generateDropdownList({ ingredientList, applianceList, ustensilsList });
 });
@@ -20,7 +20,7 @@ appareilInput.addEventListener("input", (e) => {
   let applianceList = [];
   let ustensilsList = undefined;
   applianceList = search(
-    e.target.value.toLowerCase(),
+    normalizeStr(e.target.value.toLowerCase()),
     getTagList(recipeList).applianceList
   );
   getTime(e.target.value.toLowerCase(), "appareils")
@@ -31,14 +31,14 @@ ustencilsInput.addEventListener("input", (e) => {
   let applianceList = undefined;
   let ustensilsList = [];
   ustensilsList = search(
-    e.target.value.toLowerCase(),
+    normalizeStr(e.target.value.toLowerCase()),
     getTagList(recipeList).ustensilsList
   );
-  getTime(e.target.value.toLowerCase(), "ustenciles")
+  getTime(normalizeStr(e.target.value.toLowerCase()), "ustenciles")
   generateDropdownList({ ingredientList, applianceList, ustensilsList });
 });
 
 mainInput.addEventListener("input", (e) => {
-  displayRecipes(searchRecipe(e.target.value.toLowerCase(), recipeList));
-  getTime(e.target.value.toLowerCase(), "main")
+  displayRecipes(searchRecipe(normalizeStr(e.target.value.toLowerCase()), recipeList));
+  getTime(normalizeStr(e.target.value.toLowerCase()), "main")
 });
