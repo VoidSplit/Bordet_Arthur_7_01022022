@@ -8,8 +8,3 @@ ___
 |First Algorithm|6ms - 0ms|1ms - 0ms|1ms - 0ms|1ms - 0ms|
 |Second Algorithm|9ms - 0ms|1ms - 0ms|1ms - 0ms|1ms - 0ms|
 
-
-## First Algorithm
-The first algorithm use forEach loops, map, and other technologies like them.
-## Second Algorithm
-The first algorithm use for loops.
