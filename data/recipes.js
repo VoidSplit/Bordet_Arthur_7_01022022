@@ -1,4 +1,4 @@
-const recipes = [
+const RECIPES = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
