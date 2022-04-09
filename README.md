@@ -3,8 +3,7 @@
 ```
 ___
 ## Statistics of the two search algorithms:
-||Main search bar|Ingredients dropdown|Appliance dropdown|Ustencils dropdown|
-|-------------|-------------|-------------|-------------|-------------|
-|First Algorithm|6ms - 0ms|1ms - 0ms|1ms - 0ms|1ms - 0ms|
-|Second Algorithm|9ms - 0ms|1ms - 0ms|1ms - 0ms|1ms - 0ms|
 
+<p align="center">
+<img src="https://i.imgur.com/384bqTw.png" width="600px"/>
+</p>
