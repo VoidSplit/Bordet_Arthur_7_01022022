@@ -371,10 +371,18 @@ function displayPage(tags, recipes, dropdowns) {
     searchbarInput.setAttribute('placeholder', 'Rechercher une recette')
     searchbarInput.addEventListener('input', (e) => {
         let value = normalizeStr(e.target.value.toLowerCase());
-        let recipeList = searchRecipes(value);
-        refreshRecipeList(recipeList)
-        let tagList = getTagList(recipeList)
-        refreshDropdown(tagList)
+        if(value.length >= 3 || tags.length > 0) {
+            let recipeList = searchRecipes(value);
+            refreshRecipeList(recipeList)
+            let tagList = getTagList(recipeList)
+            refreshDropdown(tagList)
+        } else {
+            value = ""
+            let recipeList = searchRecipes(value);
+            refreshRecipeList(recipeList)
+            let tagList = getTagList(recipeList)
+            refreshDropdown(tagList)
+        }
     })
 
     searchbarIcon.setAttribute('class', 'icon')
@@ -565,7 +573,9 @@ function displayPage(tags, recipes, dropdowns) {
 function searchRecipes(value) {
     let list = []
     if (filters.length > 0) {
-        for(let recipe of RECIPES) {
+        //for(let recipe of RECIPES) {
+        for(let i = 0; i < RECIPES.length; i++) {
+            let recipe = RECIPES[i];
             let fullTagsList = [];
             if(fullTagsList.includes(normalizeStr(recipe.appliance)) != true) {
                 fullTagsList.push(normalizeStr(recipe.appliance))
@@ -575,7 +585,7 @@ function searchRecipes(value) {
                     fullTagsList.push(normalizeStr(ingredient.ingredient))
                 }
             }
-            for(let ustencil of recipe.ustensils) {
+            for(let ustensil of recipe.ustensils) {
                 if(fullTagsList.includes(normalizeStr(ustensil)) != true) {
                     fullTagsList.push(normalizeStr(ustensil))
                 }
@@ -585,6 +595,17 @@ function searchRecipes(value) {
                 filterList.push(normalizeStr(filter.name))
             }
             if(!list.includes(recipe)) {
+                function bool_result_evenry( input, predicat ){
+                    for( let key in input ){
+                        if( !predicat(input[key]) ){ return false; }
+                    }
+                    return true;
+                }
+                let condition = (n) => fullTagsList.includes(n);
+                let i = 0;
+                while (condition(filterList[i]) && i < filterList.length) i++;
+                const b = i === filterList.length;
+
                 if(filterList.every(el => fullTagsList.includes(el))) {
                     list.push(recipe)
                 }
@@ -594,15 +615,17 @@ function searchRecipes(value) {
         for(let recipe of RECIPES) {
             if(!list.includes(recipe)) {
                 if(normalizeStr(recipe.name).includes(value)) list.push(recipe)
-                if(normalizeStr(recipe.description).includes(value)) list.push(recipe)
-                if(normalizeStr(recipe.appliance).includes(value)) list.push(recipe)
-                for(let ingredient of recipe.ingredients) {
-                    if(normalizeStr(ingredient.ingredient).includes(value)) list.push(recipe)
+                else if(normalizeStr(recipe.description).includes(value)) list.push(recipe)
+                else if(normalizeStr(recipe.appliance).includes(value)) list.push(recipe)
+                else {
+                    for(let ingredient of recipe.ingredients) {
+                        if(normalizeStr(ingredient.ingredient).includes(value)) list.push(recipe)
+                    }
                 }
+                
             }
         }
     }
-    
     return list
 }
 function refreshRecipeList(recipes) {
