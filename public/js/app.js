@@ -595,18 +595,13 @@ function searchRecipes(value) {
                 filterList.push(normalizeStr(filter.name))
             }
             if(!list.includes(recipe)) {
-                function bool_result_evenry( input, predicat ){
-                    for( let key in input ){
-                        if( !predicat(input[key]) ){ return false; }
-                    }
-                    return true;
-                }
+
                 let condition = (n) => fullTagsList.includes(n);
                 let i = 0;
                 while (condition(filterList[i]) && i < filterList.length) i++;
                 const b = i === filterList.length;
-
-                if(filterList.every(el => fullTagsList.includes(el))) {
+                console.log(b)
+                if(b == true) {
                     list.push(recipe)
                 }
             }
